@@ -1,0 +1,18 @@
+/* Colors */
+:root {
+  --color-gray: #F5F5F5;
+  --color-green: #2A5032;
+  --color-emerald: #479969;
+  --color-lime: #D0DF7F;
+  --color-light-yellow: #FDF8E2;
+  --color-orange: #E99053;
+  --color-white: #FFFFFF;
+}
+
+/* Space */
+:root {
+  --space-small: 8px;
+  --space-medium: 16px;
+  --space-big: 32px;
+}
+
