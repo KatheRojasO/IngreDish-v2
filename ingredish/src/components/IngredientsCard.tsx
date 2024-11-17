@@ -1,37 +1,46 @@
-interface IngredientsCardProps {
-  bevarages: string[];
-  fruits: string[];
-  vegetables: string[];
-  proteins: string[];
-  dairy: string[];
-  grains_and_starches: string[];
-  spices_and_herbs: string[];
-  oils_and_fats: string[];
-  sweeteners: string[];
-}
+import { useState } from "react";
+import ingredientsData from "../data/ingredients.json";
 
-export function IngredientsCard(props: IngredientsCardProps) {
-  const categories = [
-    { title: "Beverages", content: props.bevarages },
-    { title: "Fruits", content: props.fruits },
-    { title: "Vegetables", content: props.vegetables },
-    { title: "Proteins", content: props.proteins },
-    { title: "Dairy", content: props.dairy },
-    { title: "Grains and Starches", content: props.grains_and_starches },
-    { title: "Spices and Herbs", content: props.spices_and_herbs },
-    { title: "Oils and Fats", content: props.oils_and_fats },
-    { title: "Sweeteners", content: props.sweeteners },
-  ];
+export function IngredientsCard() {
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+
+  const categories = Object.keys(ingredientsData) as (keyof typeof ingredientsData)[];
+  console.log(categories);
+
+  const handleCheckboxChange = (ingredient: string) => {
+    setSelectedIngredients((prev) =>
+      prev.includes(ingredient)
+        ? prev.filter((item) => item !== ingredient)
+        : [...prev, ingredient]
+    );
+  };
 
   return (
     <div>
-      {categories.map((category, index) => (
-        <div key={index}>
-          <h3>{category.title}</h3>
-          {category.content}
+      <h2>Ingredients</h2>
+      {categories.map((category) => (
+        <div key={category}>
+          <h3>{category}</h3>
+          {ingredientsData[category].map((ingredient) => (
+            <div key={ingredient}>
+              <input
+                type="checkbox"
+                id={ingredient}
+                name={ingredient}
+                onChange={() => handleCheckboxChange(ingredient)}
+              />
+              <label htmlFor={ingredient}>{ingredient}</label>
+            </div>
+          ))}
         </div>
       ))}
+      
+      <h3>Selected Ingredients</h3>
+      <ul>
+        {selectedIngredients.map((ingredient) => (
+          <li key={ingredient}>{ingredient}</li>
+        ))}
+      </ul>
     </div>
   );
 }
-
