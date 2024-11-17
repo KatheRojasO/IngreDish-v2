@@ -1,0 +1,14 @@
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ingredients-list {
+  margin-left: 1rem;
+}
+
+.hidden {
+  display: none;
+}
