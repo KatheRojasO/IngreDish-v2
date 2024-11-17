@@ -10,3 +10,12 @@ body {
   padding: 0;
   background-color: var(--color-gray);
 }
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
