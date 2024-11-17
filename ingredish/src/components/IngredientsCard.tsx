@@ -3,9 +3,7 @@ import ingredientsData from "../data/ingredients.json";
 
 export function IngredientsCard() {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
-
   const categories = Object.keys(ingredientsData) as (keyof typeof ingredientsData)[];
-  console.log(categories);
 
   const handleCheckboxChange = (ingredient: string) => {
     setSelectedIngredients((prev) =>
@@ -34,13 +32,15 @@ export function IngredientsCard() {
           ))}
         </div>
       ))}
-      
+
       <h3>Selected Ingredients</h3>
       <ul>
         {selectedIngredients.map((ingredient) => (
           <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
+      <button onClick={() => setSelectedIngredients([])}>Clear</button>
+      <button onClick={() => console.log(selectedIngredients)}>Submit</button>
     </div>
   );
 }
