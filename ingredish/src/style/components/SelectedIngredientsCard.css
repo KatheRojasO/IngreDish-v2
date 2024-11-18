@@ -1,6 +1,16 @@
+.selected-ingredients-container {
+  margin-top: var(--space-big);
+  padding: var(--space-medium);
+  background-color: var(--color-white);
+  border-radius: var(--space-small);
+  box-shadow: 5px 10px 18px #adabab;
+}
+
 .selected-ingredient {
   display: flex;
   align-items: center;
+  margin-right: var(--space-small);
+  margin-top: var(--space-small);
 }
 
 .close-button {
@@ -9,4 +19,34 @@
   margin: 0;
   background-color: transparent;
   height: 20px;
+}
+
+.selected-ingredients-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--space-medium);
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-button,
+.clear-button {
+  border-radius: var(--space-small);
+  border: 1px;
+  background-color: var(--color-emerald);
+  color: var(--color-white);
+  padding: var(--space-small) var(--space-medium);
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.search-button:hover,
+.clear-button:hover {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-emerald);
+  color: var(--color-emerald);
 }
