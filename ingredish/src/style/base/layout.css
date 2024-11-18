@@ -6,8 +6,8 @@ button {
 }
 
 body {
-  margin: var(--space-medium);
   padding: 0;
+  margin: 0;
   background-color: var(--color-light-gray);
 }
 
