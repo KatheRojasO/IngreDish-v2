@@ -6,9 +6,9 @@ button {
 }
 
 body {
-  margin: 0;
+  margin: var(--space-medium);
   padding: 0;
-  background-color: var(--color-gray);
+  background-color: var(--color-light-gray);
 }
 
 ul {
@@ -19,4 +19,10 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+  /* color: #40a945; */
 }

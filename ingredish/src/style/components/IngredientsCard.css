@@ -1,3 +1,11 @@
+.card-container {
+  background-color: var(--color-white);
+  border-radius: var(--space-small);
+  box-shadow: 5px 10px 18px #adabab;
+  margin-top: var(--space-big);
+  padding: var(--space-medium);
+}
+
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -6,9 +14,28 @@
 }
 
 .ingredients-list {
-  margin-left: 1rem;
+  background-color: var(--color-white);
+  border-radius: var(--space-small);
+  margin-top: var(--space-medium);
 }
 
 .hidden {
   display: none;
+}
+
+.ingredient-container {
+  margin-bottom: var(--space-small);
+  display: flex;
+}
+
+.ingredient-container label {
+  color: var(--color-gray);
+  margin-left: var(--space-small);
+}
+
+.ingredient-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-emerald);
+  cursor: pointer;
 }

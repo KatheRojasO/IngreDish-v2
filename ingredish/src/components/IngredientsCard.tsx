@@ -24,20 +24,21 @@ export function IngredientsCard({ selectedIngredients, setSelectedIngredients }:
     <div>
       <h2>Ingredients</h2>
       {categories.map((category) => (
-        <div key={category}>
+        <div key={category} className="card-container">
           <div className="card-header" onClick={() => toggleCategoryVisibility(category)}>
             <h3>{category}</h3>
             <ChevronDown />
           </div>
           <div className={`ingredients-list ${visibleCategories[category] ? "" : "hidden"}`}>
             {ingredientsData[category].map((ingredient) => (
-              <div key={ingredient}>
+              <div key={ingredient} className="ingredient-container">
                 <input
                   type="checkbox"
                   id={ingredient}
                   name={ingredient}
                   checked={selectedIngredients.includes(ingredient)}
                   onChange={() => handleCheckboxChange(ingredient)}
+                  className="ingredient-checkbox"
                 />
                 <label htmlFor={ingredient}>{ingredient}</label>
               </div>

@@ -1,8 +1,9 @@
 /* Colors */
 :root {
-  --color-gray: #F5F5F5;
+  --color-light-gray: #F5F5F5;
+  --color-gray: #777a7a;
   --color-green: #2A5032;
-  --color-emerald: #479969;
+  --color-emerald: #3b9840;
   --color-lime: #D0DF7F;
   --color-light-yellow: #FDF8E2;
   --color-orange: #E99053;
