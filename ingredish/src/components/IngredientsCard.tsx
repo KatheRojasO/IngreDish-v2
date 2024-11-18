@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ingredientsData from "../data/ingredients.json";
 import ChevronDown from "../assets/icons/ChevronDown";
+import Close from "../assets/icons/Close";
 
 export function IngredientsCard() {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
@@ -21,8 +22,12 @@ export function IngredientsCard() {
   };
 
   const clearSelection = () => {
-    setSelectedIngredients([]); 
+    setSelectedIngredients([]);
   };
+
+  const removeIngredient = (ingredient: string) => {  
+    setSelectedIngredients((prev) => prev.filter((item) => item !== ingredient));
+  }
 
   return (
     <div>
@@ -53,7 +58,12 @@ export function IngredientsCard() {
       <h3>Selected Ingredients</h3>
       <ul>
         {selectedIngredients.map((ingredient) => (
-          <li key={ingredient}>{ingredient}</li>
+          <div className="selected-ingredient">
+            <button className="close-button" onClick={() => removeIngredient(ingredient)}>
+              <Close />
+            </button>
+            <li key={ingredient}>{ingredient}</li>
+          </div>
         ))}
       </ul>
       <button onClick={clearSelection}>Clear</button>
