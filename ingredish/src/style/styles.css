@@ -2,3 +2,4 @@
 @import "./base/variables.css";
 
 @import "./components/IngredientsCard.css";
+@import "./components/SelectedIngredientsCard.css";

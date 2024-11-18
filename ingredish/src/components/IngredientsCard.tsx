@@ -1,10 +1,9 @@
 import { useState } from "react";
 import ingredientsData from "../data/ingredients.json";
 import ChevronDown from "../assets/icons/ChevronDown";
-import Close from "../assets/icons/Close";
+import { IngredientsCardProps } from "../types/Ingredient";
 
-export function IngredientsCard() {
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+export function IngredientsCard({ selectedIngredients, setSelectedIngredients }: IngredientsCardProps) {
   const [visibleCategories, setVisibleCategories] = useState<{ [key: string]: boolean }>({});
   const categories = Object.keys(ingredientsData) as (keyof typeof ingredientsData)[];
 
@@ -20,14 +19,6 @@ export function IngredientsCard() {
       [category]: !prev[category],
     }));
   };
-
-  const clearSelection = () => {
-    setSelectedIngredients([]);
-  };
-
-  const removeIngredient = (ingredient: string) => {  
-    setSelectedIngredients((prev) => prev.filter((item) => item !== ingredient));
-  }
 
   return (
     <div>
@@ -54,20 +45,6 @@ export function IngredientsCard() {
           </div>
         </div>
       ))}
-
-      <h3>Selected Ingredients</h3>
-      <ul>
-        {selectedIngredients.map((ingredient) => (
-          <div className="selected-ingredient">
-            <button className="close-button" onClick={() => removeIngredient(ingredient)}>
-              <Close />
-            </button>
-            <li key={ingredient}>{ingredient}</li>
-          </div>
-        ))}
-      </ul>
-      <button onClick={clearSelection}>Clear</button>
-      <button onClick={() => console.log(selectedIngredients)}>Submit</button>
     </div>
   );
 }
