@@ -6,9 +6,19 @@ export default function IngredientsPage() {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
 
   return (
-    <div>
-      <IngredientsCard selectedIngredients={selectedIngredients} setSelectedIngredients={setSelectedIngredients}/>
-      <SelectedIngredientsCard selectedIngredients={selectedIngredients} setSelectedIngredients={setSelectedIngredients}/>
+    <div className="ingredients-page">
+      <div className="ingredients-content">
+        <IngredientsCard
+          selectedIngredients={selectedIngredients}
+          setSelectedIngredients={setSelectedIngredients}
+        />
+      </div>
+      <div className="selected-ingredients-sidebar">
+        <SelectedIngredientsCard
+          selectedIngredients={selectedIngredients}
+          setSelectedIngredients={setSelectedIngredients}
+        />
+      </div>
     </div>
   );
 }

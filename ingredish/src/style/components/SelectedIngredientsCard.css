@@ -1,5 +1,5 @@
 .selected-ingredients-container {
-  margin-top: var(--space-big);
+  margin-top: var(--space-small);
   padding: var(--space-medium);
   background-color: var(--color-white);
   border-radius: var(--space-small);

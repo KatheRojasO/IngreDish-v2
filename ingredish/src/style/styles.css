@@ -3,3 +3,5 @@
 
 @import "./components/IngredientsCard.css";
 @import "./components/SelectedIngredientsCard.css";
+
+@import "./pages/IngredientsPage.css";

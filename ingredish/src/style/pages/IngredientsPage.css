@@ -1,0 +1,9 @@
+.selected-ingredients-sidebar {
+  position: fixed;
+  top: 90px;
+  width: 289px;
+}
+
+.ingredients-page {
+  margin-top: 280px;
+}
