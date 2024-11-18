@@ -2,7 +2,7 @@ import { SignedOut } from "@clerk/clerk-react";
 import IngredientsPage from "./pages/IngredientsPage";
 import "./style/styles.css";
 import WelcomePageHeader from "./components/WelcomePageHeader";
-import WelcomePage from "./style/pages/WelcomePage";
+import WelcomePage from "./pages/WelcomePage";
 
 export function App() {
   return (
