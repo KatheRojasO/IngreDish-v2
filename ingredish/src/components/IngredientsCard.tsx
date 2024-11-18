@@ -4,18 +4,12 @@ import ChevronDown from "../assets/icons/ChevronDown";
 
 export function IngredientsCard() {
   const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
-  const [visibleCategories, setVisibleCategories] = useState<{
-    [key: string]: boolean;
-  }>({});
-  const categories = Object.keys(
-    ingredientsData
-  ) as (keyof typeof ingredientsData)[];
+  const [visibleCategories, setVisibleCategories] = useState<{ [key: string]: boolean }>({});
+  const categories = Object.keys(ingredientsData) as (keyof typeof ingredientsData)[];
 
   const handleCheckboxChange = (ingredient: string) => {
     setSelectedIngredients((prev) =>
-      prev.includes(ingredient)
-        ? prev.filter((item) => item !== ingredient)
-        : [...prev, ingredient]
+      prev.includes(ingredient) ? prev.filter((item) => item !== ingredient) : [...prev, ingredient]
     );
   };
 
@@ -26,15 +20,16 @@ export function IngredientsCard() {
     }));
   };
 
+  const clearSelection = () => {
+    setSelectedIngredients([]); 
+  };
+
   return (
     <div>
       <h2>Ingredients</h2>
       {categories.map((category) => (
         <div key={category}>
-          <div
-            className="card-header"
-            onClick={() => toggleCategoryVisibility(category)}
-          >
+          <div className="card-header" onClick={() => toggleCategoryVisibility(category)}>
             <h3>{category}</h3>
             <ChevronDown />
           </div>
@@ -45,6 +40,7 @@ export function IngredientsCard() {
                   type="checkbox"
                   id={ingredient}
                   name={ingredient}
+                  checked={selectedIngredients.includes(ingredient)}
                   onChange={() => handleCheckboxChange(ingredient)}
                 />
                 <label htmlFor={ingredient}>{ingredient}</label>
@@ -60,7 +56,7 @@ export function IngredientsCard() {
           <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
-      <button onClick={() => setSelectedIngredients([])}>Clear</button>
+      <button onClick={clearSelection}>Clear</button>
       <button onClick={() => console.log(selectedIngredients)}>Submit</button>
     </div>
   );
