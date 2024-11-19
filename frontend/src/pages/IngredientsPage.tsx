@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import { Header } from "../components/Header.js";
 import { IngredientsCard } from "../components/IngredientsCard.js";
 import { SelectedIngredientsCard } from "../components/SelectedIngredientsCard.js";
 
 export default function IngredientsPage() {
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>(
+    () => JSON.parse(localStorage.getItem("selectedIngredients") || "[]")
+  );
+
+  useEffect(() => {
+    localStorage.setItem("selectedIngredients", JSON.stringify(selectedIngredients));
+  }, [selectedIngredients]);
+
+
   const { user } = useUser();
 
   return (

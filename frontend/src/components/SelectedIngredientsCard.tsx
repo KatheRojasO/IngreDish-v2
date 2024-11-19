@@ -4,6 +4,7 @@ import { IngredientsCardProps } from "../types/Ingredient";
 export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngredients }: IngredientsCardProps) {
   const clearSelection = () => {
     setSelectedIngredients([]);
+    localStorage.removeItem("selectedIngredients");
   };
 
   const removeIngredient = (ingredient: string) => {
