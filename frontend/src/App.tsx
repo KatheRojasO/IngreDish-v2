@@ -4,8 +4,15 @@ import "./style/styles.css";
 import WelcomePageHeader from "./components/WelcomePageHeader";
 import WelcomePage from "./pages/WelcomePage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RecipesPage } from "./pages/RecipesPage";
+import { useState } from "react";
+
 
 export function App() {
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>(() =>
+    JSON.parse(localStorage.getItem("selectedIngredients") || "[]")
+  );
+
   return (
     <BrowserRouter>
       <SignedOut>
@@ -13,7 +20,8 @@ export function App() {
         <WelcomePage />
       </SignedOut>
       <Routes>
-        <Route path="/" element={<IngredientsPage />} />
+        <Route path="/" element={<IngredientsPage selectedIngredients={selectedIngredients} setSelectedIngredients={setSelectedIngredients}/>} />
+        <Route path="/recipes" element={<RecipesPage selectedIngredients={selectedIngredients} />} />
       </Routes>
     </BrowserRouter>
   );
