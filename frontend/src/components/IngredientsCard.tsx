@@ -22,7 +22,6 @@ export function IngredientsCard({ selectedIngredients, setSelectedIngredients }:
 
   return (
     <div>
-      <h2>Ingredients</h2>
       {categories.map((category) => (
         <div key={category} className="card-container">
           <div className="card-header" onClick={() => toggleCategoryVisibility(category)}>

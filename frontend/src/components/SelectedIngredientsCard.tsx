@@ -1,7 +1,7 @@
 import Close from "../assets/icons/Close";
 import { IngredientsCardProps } from "../types/Ingredient";
 
-export default function SelectedIngredientsCard({
+export function SelectedIngredientsCard({
   selectedIngredients,
   setSelectedIngredients,
 }: IngredientsCardProps) {
