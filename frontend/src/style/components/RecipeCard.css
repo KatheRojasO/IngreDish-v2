@@ -48,22 +48,11 @@
   .card {
     width: 350px;
   }
-
-  .card-container {
-    justify-items: center;
-  }
 }
 
 @media (min-width: 768px) {
   .card {
     width: 350px;
-  }
-
-  .card-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: var(--space-medium);
-    margin: 0px var(--space-big);
   }
 }
 
@@ -71,19 +60,11 @@
   .card {
     width: 300px;
   }
-
-  .card-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media (min-width: 1440px) {
   .card {
     width: 330px;
-  }
-
-  .card-container {
-    grid-template-columns: repeat(4, 1fr);
   }
 }
 
