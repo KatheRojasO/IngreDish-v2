@@ -1,7 +1,7 @@
 import Close from "../assets/icons/Close";
-import { IngredientsCardProps } from "../types/Ingredient";
+import { SelectedIngredientsProps } from "../types/Ingredient";
 
-export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngredients }: IngredientsCardProps) {
+export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngredients }: SelectedIngredientsProps) {
   const clearSelection = () => {
     setSelectedIngredients([]);
     localStorage.removeItem("selectedIngredients");
