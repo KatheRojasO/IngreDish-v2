@@ -19,6 +19,7 @@
   margin: 0;
   background-color: transparent;
   height: 20px;
+  cursor: pointer;
 }
 
 .selected-ingredients-list {
