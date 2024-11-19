@@ -44,9 +44,41 @@
   cursor: pointer;
 }
 
-.search-button:hover,
-.clear-button:hover {
+.search-button:not(:disabled):hover,
+.clear-button:not(:disabled):hover {
   background-color: var(--color-white);
   border: 1px solid var(--color-emerald);
   color: var(--color-emerald);
+}
+
+.search-button:disabled,
+.clear-button:disabled {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 1;
+  background-color: var(--color-gray);
+}
+
+.search-button:disabled::after,
+.clear-button:disabled::after {
+  content: "Select at least one ingredient to search";
+  position: absolute;
+  bottom: -90%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+}
+
+.search-button:disabled:hover::after,
+.clear-button:disabled:hover::after {
+  opacity: 1;
 }

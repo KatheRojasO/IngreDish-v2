@@ -1,10 +1,7 @@
 import Close from "../assets/icons/Close";
 import { IngredientsCardProps } from "../types/Ingredient";
 
-export function SelectedIngredientsCard({
-  selectedIngredients,
-  setSelectedIngredients,
-}: IngredientsCardProps) {
+export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngredients }: IngredientsCardProps) {
   const clearSelection = () => {
     setSelectedIngredients([]);
   };
@@ -27,10 +24,18 @@ export function SelectedIngredientsCard({
         ))}
       </ul>
       <div className="button-container">
-        <button onClick={clearSelection} className="clear-button">
+        <button
+          className="clear-button"
+          onClick={clearSelection}
+          disabled={selectedIngredients.length === 0}
+        >
           Clear
         </button>
-        <button onClick={() => console.log(selectedIngredients)} className="search-button">
+        <button
+          className="search-button"
+          onClick={() => console.log(selectedIngredients)}
+          disabled={selectedIngredients.length === 0}
+        >
           Search recipe
         </button>
       </div>
