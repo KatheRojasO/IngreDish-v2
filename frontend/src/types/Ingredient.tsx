@@ -8,3 +8,7 @@ export interface SelectedIngredientsProps {
   selectedIngredients: string[];
   setSelectedIngredients: React.Dispatch<React.SetStateAction<string[]>>;
 }
+
+export interface SelectedIngredientsForRecipesProps {
+  selectedIngredients: string[];
+}

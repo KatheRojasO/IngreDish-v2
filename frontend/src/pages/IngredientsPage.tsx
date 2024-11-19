@@ -4,12 +4,9 @@ import { Header } from "../components/Header.js";
 import { IngredientsCard } from "../components/IngredientsCard.js";
 import { SelectedIngredientsCard } from "../components/SelectedIngredientsCard.js";
 import { SearchBar } from "../components/SearchBar.js";
+import { SelectedIngredientsProps } from "../types/Ingredient.js";
 
-export default function IngredientsPage() {
-  const [selectedIngredients, setSelectedIngredients] = useState<string[]>(() =>
-    JSON.parse(localStorage.getItem("selectedIngredients") || "[]")
-  );
-
+export default function IngredientsPage({selectedIngredients, setSelectedIngredients}: SelectedIngredientsProps) {
   useEffect(() => {
     localStorage.setItem("selectedIngredients", JSON.stringify(selectedIngredients));
   }, [selectedIngredients]);
