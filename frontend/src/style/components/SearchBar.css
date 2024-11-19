@@ -1,0 +1,20 @@
+.searchbar-container {
+  display: flex;
+  justify-content: center;
+  margin: var(--space-big) 0px;
+}
+
+.searchbar-container input {
+  margin-right: var(--space-small);
+  border-color: var(--color-white);
+  border-radius: var(--space-small);
+  border-width: 0px;
+  padding: 5px;
+  height: 32px;
+}
+
+@media (min-width: 768px) {
+  .searchbar-container input {
+    width: 300px;
+  }
+}
