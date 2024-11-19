@@ -2,7 +2,7 @@
 @import "./base/variables.css";
 
 @import "./components/WelcomePageHeader.css";
-
+@import "./components/Header.css";
 @import "./components/IngredientsCard.css";
 @import "./components/SelectedIngredientsCard.css";
 
