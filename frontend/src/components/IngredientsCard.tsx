@@ -2,6 +2,7 @@ import { useState } from "react";
 import ingredientsData from "../data/ingredients.json";
 import ChevronDown from "../assets/icons/ChevronDown";
 import { IngredientsCardProps } from "../types/Ingredient";
+import ChevronUp from "../assets/icons/ChevronUp";
 
 export function IngredientsCard({ selectedIngredients, setSelectedIngredients }: IngredientsCardProps) {
   const [visibleCategories, setVisibleCategories] = useState<{ [key: string]: boolean }>({});
@@ -26,7 +27,7 @@ export function IngredientsCard({ selectedIngredients, setSelectedIngredients }:
         <div key={category} className="card-container">
           <div className="card-header" onClick={() => toggleCategoryVisibility(category)}>
             <h3>{category}</h3>
-            <ChevronDown />
+            {visibleCategories[category] ? <ChevronUp /> : <ChevronDown />}
           </div>
           <div className={`ingredients-list ${visibleCategories[category] ? "" : "hidden"}`}>
             {ingredientsData[category].map((ingredient) => (
