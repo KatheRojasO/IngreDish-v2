@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Close from "../assets/icons/Close";
 import { SelectedIngredientsProps } from "../types/Ingredient";
 
@@ -32,13 +33,15 @@ export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngred
         >
           Clear
         </button>
-        <button
-          className="search-button"
-          onClick={() => console.log(selectedIngredients)}
-          disabled={selectedIngredients.length === 0}
-        >
-          Search recipe
-        </button>
+        <Link to="/recipes">
+          <button
+            className="search-button"
+            onClick={() => console.log(selectedIngredients)}
+            disabled={selectedIngredients.length === 0}
+          >
+            Search recipe
+          </button>
+        </Link>
       </div>
     </div>
   );
