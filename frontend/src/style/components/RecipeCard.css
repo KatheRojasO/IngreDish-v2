@@ -29,10 +29,10 @@
 }
 
 .recipe-button{
-  background-color: var(--color-orange);
+  background-color: var(--color-emerald);
   border-style: solid;
   color: var(--color-white);
-  border-color: var(--color-orange);
+  border-color: var(--color-emerald);
   border-radius: var(--space-medium);
   cursor: pointer;
   transition: 0.4s;
@@ -41,7 +41,7 @@
 
 .recipe-button:hover {
   background-color: var(--color-white);
-  color: var(--color-orange);
+  color: var(--color-emerald);
 }
 
 @media (min-width: 425px) {
