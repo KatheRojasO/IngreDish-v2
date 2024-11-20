@@ -18,6 +18,9 @@ public class User {
     @OneToMany
     private List<UserFavorite> favorites;
 
+    @OneToMany
+    private List<Note> notes;
+
     public User() {}
 
     public User(String userId, String name) {
@@ -47,5 +50,13 @@ public class User {
 
     public void setFavorites(List<UserFavorite> favorites){
         this.favorites = favorites;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes){
+        this.notes = notes;
     }
 }
