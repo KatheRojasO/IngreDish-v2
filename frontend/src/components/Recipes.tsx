@@ -1,6 +1,6 @@
 import { RecipeCard } from "./RecipeCard";
-import { Recipe, RecipesProps } from "../types/Recipe";
-import { fetchFavoritesByUserId } from "../helper/UserFavoritesHelper";
+import { RecipesProps } from "../types/Recipe";
+import { fetchFavoriteStatuses } from "../helper/UserFavoritesHelper";
 import { useUser } from "@clerk/clerk-react";
 import { useState, useEffect } from "react";
 
@@ -11,20 +11,14 @@ export function Recipes({ recipesInfo, isFavoritePage }: RecipesProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function isRecipeFavorite(recipe: Recipe) {
-      const data: Recipe[] = await fetchFavoritesByUserId(user?.id);
-      return data.some((favoriteRecipe) => favoriteRecipe.id === recipe.id);
-    }
-
-    async function fetchFavoriteStatuses() {
-      const statuses: { [key: string]: boolean } = {};
-      for (const recipe of recipesInfo) {
-        statuses[recipe.id] = await isRecipeFavorite(recipe);
-      }
+    fetchFavoriteStatuses(recipesInfo, user?.id).then((statuses) => {
+      if (Object.keys(statuses).length === 0) {
+      setLoading(true);
+      } else {
       setFavoriteStatuses(statuses);
       setLoading(false);
-    }
-    fetchFavoriteStatuses();
+      }
+    });
   }, [recipesInfo, user]);
 
   if (loading) {

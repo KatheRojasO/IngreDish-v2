@@ -19,7 +19,7 @@ export default function FavoritesPage() {
     }
 
     fetchFavorites();
-  }, [user]);
+  }, []);
 
   return (
     <div>

@@ -40,3 +40,12 @@ export async function removeFavorite (userId: string|undefined, recipeId: number
     },
   });
 }
+
+export async function fetchFavoriteStatuses(recipesInfo: Recipe[], userId: string|undefined) {
+  const data: Recipe[] = await fetchFavoritesByUserId(userId);
+  const statuses: { [key: string]: boolean } = {};
+  for (const recipe of recipesInfo) {
+    statuses[recipe.id] = await data.some((favoriteRecipe) => favoriteRecipe.id === recipe.id);
+  }
+  return statuses;
+};
