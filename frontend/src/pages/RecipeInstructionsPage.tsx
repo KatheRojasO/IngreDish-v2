@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { RecipeInstructions } from "../types/Recipe";
 import { fetchRecipeInstructions } from "../helper/SpoonacularApiHelper";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function RecipeInstructionsPage() {
   const { recipeId } = useParams<{ recipeId: string }>();
@@ -22,15 +22,16 @@ export default function RecipeInstructionsPage() {
   return (
     <div className="recipe-instructions-container">
       <Header />
-      
-        <div className="instructions-card">
-          <h3>{recipeInfo?.title}</h3>
-          <img src={image} alt={recipeInfo?.title} className="instructions-image" />
-          <ol>
-          {stepElements}
-          </ol>
-        </div>
-      
+      <div className="go-back-btn-container">
+        <Link to="/recipes">
+          <button className="go-back-button">Go back to recipes page</button>
+        </Link>
+      </div>
+      <div className="instructions-card">
+        <h3>{recipeInfo?.title}</h3>
+        <img src={image} alt={recipeInfo?.title} className="instructions-image" />
+        <ol>{stepElements}</ol>
+      </div>
     </div>
   );
 }
