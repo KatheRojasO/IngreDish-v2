@@ -21,9 +21,16 @@ li {
   list-style-type: none;
 }
 
-h1, h2, h3 {
+h1, h2 {
   margin: 0;
   padding: 0;
+}
+
+.card h3 {
+  padding: var(--space-big) var(--space-medium) var(--space-medium);
+  margin: 0px;
+  font-size: 1.1rem;
+  height: 40px;
 }
 
 input {
