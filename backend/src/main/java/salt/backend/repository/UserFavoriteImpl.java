@@ -1,4 +1,4 @@
-package salt.backend.Repository;
+package salt.backend.repository;
 
 import org.springframework.stereotype.Repository;
 import salt.backend.model.UserFavorite;
