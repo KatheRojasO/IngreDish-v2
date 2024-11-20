@@ -42,7 +42,9 @@ export function Recipes({ recipesInfo, isFavoritePage }: RecipesProps) {
 
   return (
     <div className="recipes_container">
-      <div className="cards-container">{recipes}</div>
+      <div className="cards-container">
+        {recipes}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 .recipes_container {
-  margin: var(--space-medium);
+  margin: var(--space-big) var(--space-medium);
 }
 
 .recipes_container h1 {
@@ -21,6 +21,11 @@
 }
 
 @media (min-width: 768px) {
+  .recipes_container {
+    margin-top: var(--space-medium);
+  }
+
+
   .recipes_container h1 {
     margin-left: var(--space-small);
   }

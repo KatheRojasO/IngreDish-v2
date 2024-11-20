@@ -1,0 +1,20 @@
+.go-back-btn-container {
+  margin: var(--space-big) var(--space-medium);
+}
+
+@media (min-width: 425px) {
+  .go-back-btn-container {
+    margin: var(--space-big) var(--space-big);
+  }
+}
+
+@media (min-width: 768px) {
+  .go-back-btn-container {
+    margin-bottom: 0;
+    margin-top: 48px;
+  }
+
+  .recipes-page-container{
+    margin-bottom: 50px;
+  }
+}

@@ -7,6 +7,7 @@ import { SelectedIngredientsForRecipesProps } from "../types/Ingredient";
 import { User } from "../types/User";
 import { useUser } from "@clerk/clerk-react";
 import { addUser } from "../helper/UserFavoritesHelper";
+import { Link } from "react-router-dom";
 
 export function RecipesPage({ selectedIngredients }: SelectedIngredientsForRecipesProps) {
   const [recipesInfo, setRecipesInfo] = useState<Recipe[]>([]);
@@ -26,9 +27,19 @@ export function RecipesPage({ selectedIngredients }: SelectedIngredientsForRecip
   }
 
   return (
-    <div>
+    <div className="recipes-page-container">
       <Header />
+      <div className="go-back-btn-container">
+        <Link to="/">
+          <button className="go-back-button">Go back to ingredients page</button>
+        </Link>
+      </div>
       <Recipes recipesInfo={filteredRecipes} isFavoritePage={false} />
+      <div className="go-back-btn-container">
+        <Link to="/">
+          <button className="go-back-button">Go back to ingredients page</button>
+        </Link>
+      </div>
     </div>
   );
 }
