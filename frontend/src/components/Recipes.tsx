@@ -36,6 +36,7 @@ export function Recipes({ recipesInfo, isFavoritePage }: RecipesProps) {
 
   return (
     <div className="recipes_container">
+      <h2>Enjoy the recipes we have found for you!</h2>
       <div className="cards-container">
         {recipes}
       </div>

@@ -31,13 +31,13 @@ export function RecipesPage({ selectedIngredients }: SelectedIngredientsForRecip
       <Header />
       <div className="go-back-btn-container">
         <Link to="/">
-          <button className="go-back-button">Go back to ingredients page</button>
+          <button className="go-back-button">Go back and change ingredients</button>
         </Link>
       </div>
       <Recipes recipesInfo={filteredRecipes} isFavoritePage={false} />
       <div className="go-back-btn-container">
         <Link to="/">
-          <button className="go-back-button">Go back to ingredients page</button>
+          <button className="go-back-button">Go back and change ingredients </button>
         </Link>
       </div>
     </div>

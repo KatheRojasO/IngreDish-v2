@@ -39,7 +39,7 @@ export default function FavoritesPage() {
           </Link>
         </div>
       ) : (
-        <div>
+        <div className="favorite-container">
           <Link to="/recipes">
             <button className="go-back-button">Go back to recipes page</button>
           </Link>

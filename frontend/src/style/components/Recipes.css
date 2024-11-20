@@ -2,8 +2,8 @@
   margin: var(--space-big) var(--space-medium);
 }
 
-.recipes_container h1 {
-  margin: 0px;
+.recipes_container h2 {
+  text-align: center;
 }
 
 @media (min-width: 425px) {
@@ -13,6 +13,10 @@
 
   .recipes_container h1 {
     padding: var(--space-medium) 0px 0px var(--space-big);
+  }
+
+  .recipes_container h2 {
+    margin: var(--space-medium) var(--space-big);
   }
 
   .cards-container {
@@ -28,6 +32,10 @@
 
   .recipes_container h1 {
     margin-left: var(--space-small);
+  }
+
+  .recipes_container h2 {
+    margin-top: 40px;
   }
 
   .cards-container {

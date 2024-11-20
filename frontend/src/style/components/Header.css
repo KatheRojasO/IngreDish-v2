@@ -30,7 +30,7 @@
   border-width: 2px;
   border-color: var(--color-emerald);
   margin-right: var(--space-small);
-  border-radius: var(--space-small);
+  border-radius: var(--space-medium);
   color: var(--color-emerald);
   padding: var(--space-small);
   cursor: pointer;
