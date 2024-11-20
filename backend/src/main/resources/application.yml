@@ -1,0 +1,31 @@
+debug: true
+server:
+  port: 3000
+spring:
+  #  Configure datasource here
+  #  JPA can also need some config!
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+    output:
+      ansi:
+        enabled: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/saltdb
+    username: salt
+    password: secret
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
