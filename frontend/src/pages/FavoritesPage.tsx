@@ -30,13 +30,21 @@ export default function FavoritesPage() {
         </div>
       ) : favorites.length === 0 ? (
         <div className="favorites-alert">
-          <p>You don't have any favorites yet. ¡Explore recipes and save your favorites to see them here! ❤️</p>
-          <Link to="/">
-            <button className="go-back-button">Go back to ingredients page</button>
+          <p>
+            You don't have any favorites yet. ¡Explore recipes and save your favorites to see them
+            here! ❤️
+          </p>
+          <Link to="/recipes">
+            <button className="go-back-button">Go back to recipes page</button>
           </Link>
         </div>
       ) : (
-        <Recipes recipesInfo={favorites} isFavoritePage={true} />
+        <div>
+          <Link to="/recipes">
+            <button className="go-back-button">Go back to recipes page</button>
+          </Link>
+          <Recipes recipesInfo={favorites} isFavoritePage={true} />
+        </div>
       )}
     </div>
   );
