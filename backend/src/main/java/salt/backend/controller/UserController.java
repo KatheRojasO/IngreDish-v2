@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import salt.backend.service.UserService;
 
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
 
     UserService userService;
@@ -16,7 +17,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @PostMapping("/api/users")
+    @PostMapping("")
     @ResponseStatus(value = HttpStatus.CREATED)
     public void addUser(@RequestBody AddUserDTO addUserDTO){
         try {
@@ -27,7 +28,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @PostMapping("/api/users/{userId}/favorites")
+    @PostMapping("/{userId}/favorites")
     @ResponseStatus(value = HttpStatus.CREATED)
     public void addFavoriteToUser(@PathVariable String userId, @RequestBody FavoriteDTO favoriteDto){
 
@@ -41,7 +42,7 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @GetMapping("/api/users/{userId}/favorites")
+    @GetMapping("/{userId}/favorites")
     public ResponseEntity<UserFavoriteDTO> getUserFavorites(@PathVariable String userId){
         try {
             UserFavoriteDTO userFavoriteDto = userService.getUserFavoritesByUserId(userId);
@@ -52,9 +53,33 @@ public class UserController {
     }
 
     @CrossOrigin(origins = "http://localhost:5173")
-    @DeleteMapping("/api/users/{userId}/favorites/{recipeId}")
+    @DeleteMapping("/{userId}/favorites/{recipeId}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteUserFavorite(@PathVariable String userId, @PathVariable int recipeId){
         userService.deleteFavoriteForUser(userId, recipeId);
+    }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @GetMapping("/{userId}/notes/{recipeId}")
+    public ResponseEntity<UserNotesDTO> getUserNotes(@PathVariable String userId, @PathVariable int recipeId){
+        try {
+            UserNotesDTO userNotesDTO = userService.getUserNotesByUserIdAndRecipeId(userId, recipeId);
+            return ResponseEntity.ok(userNotesDTO);
+        } catch (RuntimeException e){
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PostMapping("{userId}/notes")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void saveNote(@PathVariable String userId, @RequestBody AddNoteDTO noteDTO) {
+        userService.saveUserNote(userId, noteDTO.recipeId(), noteDTO.content());
+    }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @DeleteMapping("/{userId}/notes/{id}")
+    public void deleteNote(@PathVariable String userId, @PathVariable int id){
+        userService.deleteUserNote(userId, id);
     }
 }

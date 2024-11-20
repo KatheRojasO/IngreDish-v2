@@ -1,4 +1,4 @@
 package salt.backend.controller;
 
-public record NoteDTO(String userId, int recipeId, String content) {
+public record NoteDTO(int id, String content) {
 }
