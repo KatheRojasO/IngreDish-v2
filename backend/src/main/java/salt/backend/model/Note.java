@@ -1,26 +1,35 @@
 package salt.backend.model;
 
-import java.util.UUID;
+import jakarta.persistence.*;
 
+@Entity
 public class Note {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private UUID userId;
+
+    private String userId;
     private int recipeId;
     private String content;
 
     public Note() {}
 
     public Note(String userId, int recipeId, String name) {
-        this.userId = UUID.fromString(userId);
+        this.userId = userId;
         this.recipeId = recipeId;
         this.content = name;
     }
 
-    public UUID getUserId() {
+    public int getId() {
+        return id;
+    }
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
