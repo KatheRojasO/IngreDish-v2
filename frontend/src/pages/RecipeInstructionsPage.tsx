@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 
 export default function RecipeInstructionsPage() {
   const { recipeId } = useParams<{ recipeId: string }>();
+  const [note, setNote] = useState<string>("");
   const [recipeInfo, setRecipeInfo] = useState<RecipeInstructions | null>(null);
 
   const image = recipeInfo?.image;
@@ -18,6 +19,10 @@ export default function RecipeInstructionsPage() {
   const stepElements = recipeInfo?.analyzedInstructions.flatMap((instruction) =>
     instruction.steps.map((step, index) => <li key={index}>{step.step}</li>)
   );
+
+  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNote(e.target.value);
+  };
 
   return (
     <div className="recipe-instructions-container">
@@ -32,6 +37,18 @@ export default function RecipeInstructionsPage() {
         <img src={image} alt={recipeInfo?.title} className="instructions-image" />
         <ol>{stepElements}</ol>
       </div>
+      <div className="note-container">
+        <h3>Your Notes</h3>
+        <textarea
+          value={note}
+          onChange={handleNoteChange}
+          placeholder="Write what you liked or didn't like about this recipe..."
+          className="note-textarea"
+        />
+        <button className="save-note-button">
+          Save Note
+        </button>
+        </div>
     </div>
   );
 }

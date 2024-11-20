@@ -7,6 +7,17 @@
   text-align: center;
 }
 
+.favorite-container .go-back-button{
+  margin: var(--space-big) 0 0 var(--space-medium);
+}
+
+@media (min-width: 425px) {
+  .favorite-container .go-back-button{
+    margin-left: var(--space-big);
+  }
+  
+}
+
 @media (min-width: 768px) {
   .favorites-alert {
     margin: 80px auto;
