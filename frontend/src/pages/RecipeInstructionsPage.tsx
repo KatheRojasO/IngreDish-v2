@@ -4,12 +4,13 @@ import { RecipeInstructions } from "../types/Recipe";
 import { fetchRecipeInstructions } from "../helper/SpoonacularApiHelper";
 import { Link, useParams } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+import toast from "react-hot-toast";
 
 export default function RecipeInstructionsPage() {
   const { recipeId } = useParams<{ recipeId: string }>();
   const [note, setNote] = useState<string>("");
   const [recipeInfo, setRecipeInfo] = useState<RecipeInstructions | null>(null);
-  const [savedNote, setSavedNote] = useState<string>(""); 
+  const [savedNote, setSavedNote] = useState<string[]>([]);
   const { user } = useUser();
 
   const image = recipeInfo?.image;
@@ -29,8 +30,9 @@ export default function RecipeInstructionsPage() {
 
   const handleNoteSave = async () => {
     if (!user?.id || !recipeId) return;
-    setSavedNote(note);
-    alert("Your note has been saved!");
+    setSavedNote((prevNotes) => [...prevNotes, note]);
+    toast.success("Note saved!");
+    setNote("");
   };
 
   return (
@@ -57,13 +59,17 @@ export default function RecipeInstructionsPage() {
         <button className="save-note-button" onClick={handleNoteSave}>
           Save Note
         </button>
-        {savedNote && (
-          <div className="saved-note">
-            <h4>Saved Note:</h4>
-            <p>{savedNote}</p>
-          </div>
-        )}
+        <div className="saved-notes">
+          {savedNote.length > 0 && <h4>Your notes about this recipe</h4>}
+          <ul>
+            {savedNote.map((savedNote, index) => (
+              <li key={index} className="saved-note-item">
+                ⭐ {savedNote}
+              </li>
+            ))}
+          </ul>
         </div>
+      </div>
     </div>
   );
 }
