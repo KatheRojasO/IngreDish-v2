@@ -3,11 +3,14 @@ import { Header } from "../components/Header";
 import { RecipeInstructions } from "../types/Recipe";
 import { fetchRecipeInstructions } from "../helper/SpoonacularApiHelper";
 import { Link, useParams } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
 
 export default function RecipeInstructionsPage() {
   const { recipeId } = useParams<{ recipeId: string }>();
   const [note, setNote] = useState<string>("");
   const [recipeInfo, setRecipeInfo] = useState<RecipeInstructions | null>(null);
+  const [savedNote, setSavedNote] = useState<string>(""); 
+  const { user } = useUser();
 
   const image = recipeInfo?.image;
   useEffect(() => {
@@ -22,6 +25,12 @@ export default function RecipeInstructionsPage() {
 
   const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNote(e.target.value);
+  };
+
+  const handleNoteSave = async () => {
+    if (!user?.id || !recipeId) return;
+    setSavedNote(note);
+    alert("Your note has been saved!");
   };
 
   return (
@@ -45,9 +54,15 @@ export default function RecipeInstructionsPage() {
           placeholder="Write what you liked or didn't like about this recipe..."
           className="note-textarea"
         />
-        <button className="save-note-button">
+        <button className="save-note-button" onClick={handleNoteSave}>
           Save Note
         </button>
+        {savedNote && (
+          <div className="saved-note">
+            <h4>Saved Note:</h4>
+            <p>{savedNote}</p>
+          </div>
+        )}
         </div>
     </div>
   );
