@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   padding: var(--space-medium) 0;
+  max-height: 600px;
 }
 
 .recipe-instructions-container {
@@ -27,7 +28,17 @@
   color: black;
   display: flex;
   flex-direction: column;
+  padding: var(--space-medium);
+  border-radius: 0 0 var(--space-small) var(--space-small);
+}
 
+.saved-notes li {
+  margin-bottom: var(--space-small);
+  padding-left: 10px;
+}
+
+.saved-notes h4 {
+  text-align: center;
 }
 
 .instructions-card h3,
@@ -59,13 +70,22 @@
   margin: 0 var(--space-medium);
 }
 
-.note-textarea{
+.note-textarea {
   font-family: poppins, sans-serif;
   border-radius: var(--space-small);
   margin-bottom: var(--space-medium);
   height: 200px;
+  padding: var(--space-medium);
 }
 
+.no-notes-message {
+  text-align: center;
+}
+
+.note-list-container{
+  display: flex;
+  align-items: center;
+}
 .save-note-button {
   border-radius: var(--space-small);
   border: 1px;
@@ -106,7 +126,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-
 }
 
 .save-note-button:disabled::after {
@@ -134,25 +153,48 @@
 
 @media (min-width: 768px) {
   .instructions-card {
-    width: 450px;
+    width: 300px;
     margin-top: var(--space-big);
-    padding: var(--space-big) var(--space-medium) ;
+    padding: var(--space-big) var(--space-medium);
   }
 
   .instructions-card h3,
   .instructions-card ol,
   .instructions-image {
-    width: 400px;
+    width: 300px;
   }
 
   .note-container {
-    width: 350px;
+    width: 300px;
     margin: var(--space-big) auto;
+  }
+
+  .note-textarea {
+    font-family: poppins, sans-serif;
+    border-radius: var(--space-small);
+    margin-bottom: var(--space-medium);
+    height: 200px;
+  }
+
+  .content-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--space-big);
+    padding: 0 var(--space-big);
+    margin: var(--space-big) auto;
+    max-width: 960px;
   }
 }
 
 @media (min-width: 1024px) {
   .instructions-card {
-    padding: 50px var(--space-medium) ;
+    padding: 50px var(--space-medium);
+    width: 500px;
+  }
+
+  .instructions-card h3,
+  .instructions-card ol,
+  .instructions-image {
+    width: 500px;
   }
 }
