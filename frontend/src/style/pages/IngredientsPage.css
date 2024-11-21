@@ -51,7 +51,8 @@
   }
 
   .selected-ingredients-sidebar {
-    position: relative;
+    position: sticky;
+    align-self: start;
     width: 100%;
   }
 

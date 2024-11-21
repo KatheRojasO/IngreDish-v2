@@ -10,11 +10,17 @@
 
 @media (min-width: 768px) {
   .go-back-btn-container {
-    margin: 48px auto 0 auto;
+    margin: 48px auto 0 var(--space-big);
     max-width: 960px;
   }
 
   .recipes-page-container{
     margin-bottom: 50px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .go-back-btn-container {
+    margin: 48px auto 0 590px;
   }
 }
