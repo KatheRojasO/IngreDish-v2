@@ -11,6 +11,25 @@
   padding: var(--space-medium) 0;
 }
 
+.recipe-instructions-container {
+  padding-bottom: var(--space-big);
+}
+
+.saved-notes {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border-radius: var(--space-small);
+  margin-top: var(--space-big);
+}
+
+.saved-notes ul {
+  background-color: var(--color-lime);
+  color: black;
+  display: flex;
+  flex-direction: column;
+
+}
+
 .instructions-card h3,
 .instructions-card ol {
   margin: 0px;
@@ -108,7 +127,7 @@
   }
 
   .note-container {
-    margin: var(--space-big) auto;
+    margin: var(--space-big);
     max-width: 768px;
   }
 }
@@ -125,17 +144,15 @@
   .instructions-image {
     width: 400px;
   }
+
+  .note-container {
+    width: 350px;
+    margin: var(--space-big) auto;
+  }
 }
 
 @media (min-width: 1024px) {
   .instructions-card {
-    width: 600px;
     padding: 50px var(--space-medium) ;
-  }
-
-  .instructions-card h3,
-  .instructions-card ol,
-  .instructions-image {
-    width: 550px;
   }
 }
