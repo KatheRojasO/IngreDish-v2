@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import Close from "../assets/icons/Close";
 import { SelectedIngredientsProps } from "../types/Ingredient";
+import TrashSmall from "../assets/icons/TrashSmall";
 
-export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngredients }: SelectedIngredientsProps) {
+export function SelectedIngredientsCard({
+  selectedIngredients,
+  setSelectedIngredients,
+}: SelectedIngredientsProps) {
   const clearSelection = () => {
     setSelectedIngredients([]);
     localStorage.removeItem("selectedIngredients");
@@ -19,7 +23,7 @@ export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngred
         {selectedIngredients.map((ingredient) => (
           <div className="selected-ingredient">
             <button className="close-button" onClick={() => removeIngredient(ingredient)}>
-              <Close />
+              <TrashSmall />
             </button>
             <li key={ingredient}>{ingredient}</li>
           </div>
@@ -34,11 +38,7 @@ export function SelectedIngredientsCard({ selectedIngredients, setSelectedIngred
           Clear
         </button>
         <Link to="/recipes">
-          <button
-            className="search-button"
-            onClick={() => console.log(selectedIngredients)}
-            disabled={selectedIngredients.length === 0}
-          >
+          <button className="search-button" disabled={selectedIngredients.length === 0}>
             Search recipe
           </button>
         </Link>

@@ -21,6 +21,7 @@
   color: var(--color-white);
   border-radius: var(--space-small);
   margin-top: var(--space-big);
+  margin-bottom: var(--space-big);
 }
 
 .saved-notes ul {
@@ -51,6 +52,9 @@
   height: 250px;
   overflow: scroll;
   margin-top: var(--space-medium);
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .instructions-card li {
@@ -74,6 +78,7 @@
   font-family: poppins, sans-serif;
   border-radius: var(--space-small);
   margin-bottom: var(--space-medium);
+  margin-top: var(--space-medium);
   height: 200px;
   padding: var(--space-medium);
 }
@@ -82,10 +87,17 @@
   text-align: center;
 }
 
-.note-list-container{
+.note-list-container {
   display: flex;
   align-items: center;
 }
+
+.note-list-container button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .save-note-button {
   border-radius: var(--space-small);
   border: 1px;
@@ -106,13 +118,13 @@
 
 .save-note-button:disabled {
   position: relative;
-  cursor: not-allowed;
+  cursor: pointer;
   opacity: 1;
   background-color: var(--color-gray);
 }
 
 .save-note-button:disabled::after {
-  content: "Select at least one ingredient to search";
+  content: "You need to write a note first!";
   position: absolute;
   bottom: -90%;
   left: 50%;

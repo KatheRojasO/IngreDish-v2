@@ -34,7 +34,7 @@ export default function RecipeInstructionsPage() {
           <img src={image} alt={recipeInfo?.title} className="instructions-image" />
           <ol>{stepElements}</ol>
         </div>
-        <UserNotes recipeId = {recipeId} />
+        <UserNotes recipeId={recipeId ? parseInt(recipeId) : undefined} />
       </div>
     </div>
   );
