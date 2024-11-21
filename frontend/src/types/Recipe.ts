@@ -37,3 +37,7 @@ export interface RecipeInstructions {
 export interface RecipeInstructionSteps {
   steps: { step: string }[];
 }
+
+export interface RecipeNotesProps {
+  recipeId: string | undefined;
+}
