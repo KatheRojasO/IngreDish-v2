@@ -107,7 +107,7 @@ public class UserService {
         favRepo.deleteFavorite(userId, recipeId);
     }
 
-    public void saveUserNote (String userId, int recipeId, String content){
+    public Integer saveUserNote (String userId, int recipeId, String content){
         Optional<User> userOptional = userRepo.findUserByUserId(userId);
         if(userOptional.isEmpty()){
             throw new RuntimeException("No user found for id:" + userId);
@@ -127,6 +127,8 @@ public class UserService {
 
         noteRepo.save(note);
         userRepo.createOrUpdateUser(user);
+
+        return note.getId();
     }
 
     public UserNotesDTO getUserNotesByUserIdAndRecipeId(String userId, int recipeId){
@@ -146,6 +148,18 @@ public class UserService {
     }
 
     public void deleteUserNote (String userId, int noteId){
+        Optional<User> userOptional = userRepo.findUserByUserId(userId);
+        if(userOptional.isEmpty()){
+            throw new RuntimeException("No user found for id:" + userId);
+        }
+
+        User user = userOptional.get();
+
+        List<Note> currentNotes = user.getNotes();
+        currentNotes.removeIf(note -> note.getId() == noteId);
+        user.setNotes(currentNotes);
+
+        userRepo.createOrUpdateUser(user);
         noteRepo.deleteById(noteId);
     }
 }

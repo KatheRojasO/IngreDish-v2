@@ -73,8 +73,9 @@ public class UserController {
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("{userId}/notes")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public void saveNote(@PathVariable String userId, @RequestBody AddNoteDTO noteDTO) {
-        userService.saveUserNote(userId, noteDTO.recipeId(), noteDTO.content());
+    public ResponseEntity<Integer> saveNote(@PathVariable String userId, @RequestBody AddNoteDTO noteDTO) {
+        int noteId = userService.saveUserNote(userId, noteDTO.recipeId(), noteDTO.content());
+        return ResponseEntity.status(HttpStatus.CREATED).body(noteId);
     }
 
     @CrossOrigin(origins = "http://localhost:5173")

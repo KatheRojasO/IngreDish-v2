@@ -1,43 +1,51 @@
 import { useUser } from "@clerk/clerk-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Trash from "../assets/icons/Trash";
-import { RecipeNotesProps } from "../types/Recipe";
+import { Note, RecipeNotesProps } from "../types/Recipe";
+import { addRecipeNote, fetchNotesByUserIdAndRecipeId, removeNote } from "../helper/UserNotesHelper";
 
 export function UserNotes({ recipeId }: RecipeNotesProps) {
   const [note, setNote] = useState<string>("");
-  const [savedNote, setSavedNote] = useState<string[]>([]);
+  const [savedNotes, setSavedNotes] = useState<Note[]>([]);
   const { user } = useUser();
+
+  useEffect(() => {
+    fetchNotesByUserIdAndRecipeId(user?.id, recipeId).then((data) => {
+      setSavedNotes(data);
+    })
+  }, [savedNotes.length, user?.id, recipeId]);
 
   const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNote(e.target.value);
   };
 
   const handleNoteSave = async () => {
-    if (!user?.id || !recipeId) return;
-    setSavedNote((prevNotes) => [...prevNotes, note]);
+    const noteId = await addRecipeNote(user?.id, recipeId, note);
+    setSavedNotes((prevNotes) => [...prevNotes, {id: noteId, content: note}]);
     toast.success("Note saved!");
     setNote("");
   };
 
-  function handleDeleteNote(index: number) {
+  function handleDeleteNote(noteId: number) {
     toast.remove("Do you want to delete this note?");
-    setSavedNote((prevNotes) => prevNotes.filter((_, i) => i !== index));
+    removeNote(user?.id, noteId);
+    setSavedNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
   }
   return (
     <div className="note-container">
       <div className="saved-notes">
-        {savedNote.length > 0 ? (
+        {savedNotes.length > 0 ? (
           <>
             <h4>Your personal notes about this recipe</h4>
             <ul>
-              {savedNote.map((savedNote, index) => (
+              {savedNotes.map((savedNote, index) => (
                 <div className="note-list-container">
-                  <button onClick={() => handleDeleteNote(index)}>
+                  <button onClick={() => handleDeleteNote(savedNote.id)}>
                     <Trash />
                   </button>
                   <li key={index} className="saved-note-item">
-                    {savedNote}
+                    {savedNote.content}
                   </li>
                 </div>
               ))}
