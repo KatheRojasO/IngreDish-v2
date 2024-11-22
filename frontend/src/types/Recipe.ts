@@ -39,5 +39,10 @@ export interface RecipeInstructionSteps {
 }
 
 export interface RecipeNotesProps {
-  recipeId: string | undefined;
+  recipeId: number | undefined;
+}
+
+export interface Note {
+  id: number;
+  content: string;
 }
