@@ -5,7 +5,7 @@ Ingredish is a webpage to find out which recipes you can make with the ingredien
 This webpage has a backend and a frontend and is powered by Spring Boot, Docker, and Postgres in the backend, as well as Vite and Clerk in the frontend.
 This application also communicates with the [Spoonacular API](https://spoonacular.com/food-api)! You can find a diagram below:
 
-![Ingredish Architecture](ingredish_high_level_architecture.png)
+![ingredish_high_level_architecture](https://github.com/user-attachments/assets/0aaf4a7b-5df8-4e85-b0ac-e1f4734d972d)
 
 ## Running Ingredish locally
 
@@ -42,7 +42,8 @@ To start up the application locally, follow these simple steps:
 
 The database was created to hold users and the users' favorite dishes only. This is exemplified by the following database diagram:
 
-![Database Diagram](ingredish_database_diagram.png)
+![ingredish_database_diagram](https://github.com/user-attachments/assets/ad036aa5-b8b8-42b6-bc68-3c2877a7b06c)
+
 
 ## Frontend Mockup
 
@@ -51,4 +52,4 @@ A favorite button is provided to aggregate all the best recipes, and a My Favori
 
 You can view the frontend mockup down below:
 
-![Frontend Mockup](ingredish_frontend_mockup.png)
+![ingredish_frontend_mockup](https://github.com/user-attachments/assets/7cf203b9-1ef7-4a60-b198-99573064ea6f)
